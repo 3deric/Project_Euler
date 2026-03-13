@@ -1,6 +1,6 @@
 import math
 
-TARGET = 6
+TARGET = 10001
 
 primes : [int] = []
 
