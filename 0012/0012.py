@@ -1,27 +1,23 @@
-calculating = True
-
 TARGET = 500
 
-tri_nums : [int] = []
 tri_num : int
-counter = 2
+i = 2
+calculating = True
 
 def get_divisors(num : int) -> [int]:
     divisors = []
-    for i in range(1, num + 1):
+    for i in range(1, int(num/2) + 1):
         if num % i == 0:
             divisors.append(i)
+    divisors.append(num)
     return divisors
 
 while calculating:
-    number = 0
-    for i in range(1, counter):
-        number += i
-    tri_nums.append(number)
+    number= sum(range(1, i))
     divisors = get_divisors(number)
     if len(divisors) > TARGET:
         tri_num = number
         calculating = False
-    counter += 1
+    i += 1
 
 print("The first triangle number with more then %d divisors is: %d"%(TARGET, number))
