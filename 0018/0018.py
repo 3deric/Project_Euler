@@ -34,13 +34,9 @@ tri2 = [[75],
 def max_path_sum(triangle : []) ->  int:
     while len(triangle) > 0:
         if len(triangle) > 1:
-            i = len(triangle) -1
-            for j in triangle[i -1]:
-                index = triangle[i -1].index(j)
-                triangle[triangle.index(triangle[i-1])][index] += max(triangle[i][index:index+2])
-            #print(triangle)
+            for index in range(0,len(triangle[-2])):
+                triangle[-2][index] += max(triangle[-1][index:index+2])
         else:
-            #print(triangle)
             return triangle[0][0]
         del triangle[-1]
 
