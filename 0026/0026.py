@@ -1,14 +1,28 @@
 def calculate_decimals(div : int) -> []:
     num = 1
     result = []
-    while len(result) < 1000:
-        prev = num * 10
-        next = prev // div
+    while len(result) < 25:
+        next = num * 10 // div
         result.append(next)
-        num = prev - next * div
+        num =  num * 10 - (next * div)
+        cycle = check_cycle(result)
+        if cycle[0]:
+            print(cycle[1])
     return result
 
-print(calculate_decimals(7))
+def check_cycle(result : list[int]) -> tuple():
+    if len(result) < 2 or len(result) % 2 != 0:
+        return (False, [])
+    mid = len(result) // 2
+    x = result[:mid]
+    y = result[mid:]
+    if sum(y) // len(y) == y[0]:
+        return (True, y[0])
+    if x == y:
+        return (True, y)
+    return (False, y)
+
+calculate_decimals(7)
 #divide
 #multiply back
 #subtract
