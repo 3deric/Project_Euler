@@ -1,37 +1,48 @@
-def calculate_decimals(div : int) -> []:
+TARGET = 10
+MAX_DECIMALS = 10
+
+# calculate the decimals by performing a simple manual division
+# check for the remainder of the first calculation, save it!
+# if the remainder appears again, break from the loop
+# the result ist the cycle
+
+# print(10 // 4)
+# print((10 // 4 * 4))
+# print(10 - 8)
+# print(2 * 10 // 4)
+
+def calculate_decimals(div : int) -> list[int]:
     num = 1
     result = []
-    while len(result) < 25:
+    first_remainder = -1
+    remainders = []
+
+    while len(result) < MAX_DECIMALS:
+        # calculate the remainder of the division
+        remainder = num * 10 % div
+
+        # calculate next decimal
         next = num * 10 // div
         result.append(next)
+
+        # calculate next base number
         num =  num * 10 - (next * div)
-        cycle = check_cycle(result)
-        if cycle[0]:
-            print(cycle[1])
+        if len(remainders) > 0:
+            pass
+        remainders.append(remainder)
+
     return result
 
-def check_cycle(result : list[int]) -> tuple():
-    if len(result) < 2 or len(result) % 2 != 0:
-        return (False, [])
-    mid = len(result) // 2
-    x = result[:mid]
-    y = result[mid:]
-    if sum(y) // len(y) == y[0]:
-        return (True, y[0])
-    if x == y:
-        return (True, y)
-    return (False, y)
+# 10 : 6 = 16      # remainder 4 on first calculation
+#  6                # remainder 4 on second calculation too
+#  40               # remainder defines the start and end of the looping area
 
-calculate_decimals(7)
-#divide
-#multiply back
-#subtract
-#repeat til remainder is 0, or repeats infinite
+# 10 : 4 = 25
+#  8
+#  20
+#  20
+#   0
+#for i in range(2, TARGET):
+#    print(i, calculate_decimals(i))
 
-
-# 10 : 6 = 166
-#  6
-#  40
-#  36
-#   40
-#   36
+print(calculate_decimals(7))
