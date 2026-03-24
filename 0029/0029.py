@@ -1,7 +1,5 @@
 import time
 
-from orca.braille import endIsShowing
-
 RANGE_START = 2
 RANGE_END = 101
 
