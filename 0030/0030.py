@@ -34,10 +34,9 @@ def digit_powers(power : int) -> list[int]:
 if __name__ == '__main__':
     start_time = time.time()
 
-    sum = 0
-
-    print(digit_powers(POWER))
+    list_sum = sum(digit_powers(POWER))
 
     end_time = time.time()
 
+    print("The sum of all digit %d powers is: %d" % (POWER, list_sum))
     print("Calculation took: %f seconds" % (end_time - start_time))
